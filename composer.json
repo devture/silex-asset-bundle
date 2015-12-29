@@ -1,0 +1,21 @@
+{
+	"name": "devture/silex-asset-bundle",
+	"type": "library",
+	"description": "Silex bundle that provides some simple project assets linking",
+	"keywords": ["silex", "bundle", "assets"],
+	"license": "BSD",
+	"authors": [
+		{
+			"name": "Slavi Pantaleev",
+			"email": "s.pantaleev@gmail.com"
+		}
+	],
+	"require": {
+		"silex/silex": ">=1.0,<1.4"
+	},
+	"autoload": {
+		"psr-0": {
+			"Devture\\Bundle\\AssetBundle\\": "src/"
+		}
+	}
+}
