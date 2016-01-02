@@ -24,6 +24,7 @@ class AssetExtension extends \Twig_Extension {
 			new \Twig_SimpleFunction($makeName('is_cdn_allowed'), array($this, 'isCdnAllowed')),
 			new \Twig_SimpleFunction($makeName('url'), array($this, 'getAssetUrl')),
 			new \Twig_SimpleFunction($makeName('url_with_cdn'), array($this, 'getAssetUrlWithCdn')),
+			new \Twig_SimpleFunction($makeName('content'), array($this, 'getAssetContent')),
 		);
 	}
 
@@ -52,6 +53,18 @@ class AssetExtension extends \Twig_Extension {
 			return $cdnFullUri;
 		}
 		return $this->getAssetUrl($relativePath);
+	}
+
+	public function getAssetContent($relativePath) {
+		$relativePathTrimmed = ltrim($relativePath, '/');
+
+		$filePath = $this->config['asset_path'] . '/' . $relativePathTrimmed;
+
+		if (!file_exists($filePath)) {
+			return null;
+		}
+
+		return file_get_contents($filePath);
 	}
 
 }
