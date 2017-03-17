@@ -11,7 +11,7 @@
 		}
 	],
 	"require": {
-		"silex/silex": ">=1.0,<1.4"
+		"silex/silex": "^2.0"
 	},
 	"autoload": {
 		"psr-0": {

@@ -1,10 +1,7 @@
 <?php
 namespace Devture\Bundle\AssetBundle;
 
-use Silex\Application;
-use Silex\ServiceProviderInterface;
-
-class ServicesProvider implements ServiceProviderInterface {
+class ServicesProvider implements \Pimple\ServiceProviderInterface, \Silex\Api\BootableProviderInterface {
 
 	private $config;
 	private $namespace;
@@ -28,10 +25,11 @@ class ServicesProvider implements ServiceProviderInterface {
 		$this->config = $config;
 	}
 
-	public function register(Application $app) {
+	public function register(\Pimple\Container $container) {
+
 	}
 
-	public function boot(Application $app) {
+	public function boot(\Silex\Application $app) {
 		$app['twig']->addExtension(new Twig\AssetExtension($this->namespace, $this->config));
 	}
 
